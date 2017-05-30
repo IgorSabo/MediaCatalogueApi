@@ -44,8 +44,6 @@ public class TitleResource {
         return titleService.getTitle(id);
     }
 
-
-    //http://localhost:8080/resources/titles/listResults/type=undefined&page=12&perPage=12&genre=null&year=null
     @GET
     @Path("/listResults")
     @Produces({ MediaType.APPLICATION_JSON})
@@ -55,11 +53,17 @@ public class TitleResource {
                                  @QueryParam("genre") String genre,
                                  @QueryParam("year") String year){
 
-
-
-
         ArrayList<Title> list = (ArrayList<Title>) titleService.getResults(type, Integer.valueOf(page), Integer.valueOf(perPage), genre, year);
         return list;
     }
+
+    @GET
+    @Path("/findByTitle")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public List<Title> findByTitle(@QueryParam("title") String title){
+        return titleService.findByImdbTitle(title);
+    }
+
+
 
 }
