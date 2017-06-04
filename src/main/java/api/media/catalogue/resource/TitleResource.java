@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by Gile on 5/28/2017.
  */
+//http://localhost:8080/resources/titles/listResults?type=movie&page=1&perPage=1&genre=comedy&year=2010
 @Component
 @Path("/titles")
 public class TitleResource {
@@ -37,7 +38,7 @@ public class TitleResource {
     }
 
     @GET
-    @Path("/id={id}")
+    @Path("/{id}")
     @Produces({ MediaType.APPLICATION_JSON})
     public Title getTitle(@PathParam("id") int id){
 
@@ -63,6 +64,7 @@ public class TitleResource {
     public List<Title> findByTitle(@QueryParam("title") String title){
         return titleService.findByImdbTitle(title);
     }
+
 
 
 
